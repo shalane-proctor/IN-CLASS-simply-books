@@ -10,7 +10,7 @@ export default function AuthorsHome() {
   };
   useEffect(() => {
     GetAllAuthors();
-  }, []);
+  });
   return (
     <div>
       {authors.map((author) => (
