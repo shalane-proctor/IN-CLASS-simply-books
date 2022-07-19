@@ -10,16 +10,13 @@ export default function AuthorsHome() {
   };
   useEffect(() => {
     GetAllAuthors();
-  });
+  }, []);
   return (
     <div>
-      {authors.map((author) => (
+      {authors.map((authorObj) => (
         <AuthorCard
-          firstName={author.first_name}
-          lastName={author.last_name}
-          email={author.email}
-          key={author.firebaseKey}
-          authorObj={author}
+          key={authorObj.firebaseKey}
+          authorObj={authorObj}
           onUpdate={GetAllAuthors}
         />
       ))}
