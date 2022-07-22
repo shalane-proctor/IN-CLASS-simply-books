@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import { getAuthors } from '../api/authorData'; import { useAuth } from '../utils/context/authContext';
 import AuthorCard from '../components/AuthorCard';
 
@@ -12,14 +14,15 @@ export default function AuthorsHome() {
     GetAllAuthors();
   }, []);
   return (
-    <div>
-      {authors.map((authorObj) => (
-        <AuthorCard
-          key={authorObj.firebaseKey}
-          authorObj={authorObj}
-          onUpdate={GetAllAuthors}
-        />
-      ))}
-    </div>
+    <>
+      <Link href="/author/new" passHref>
+        <Button>Add An Author</Button>
+      </Link>
+      <div>
+        {authors.map((authorObj) => (
+          <AuthorCard key={authorObj.firebaseKey} authorObj={authorObj} onUpdate={GetAllAuthors} />
+        ))}
+      </div>
+    </>
   );
 }
